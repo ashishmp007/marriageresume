@@ -1,8 +1,6 @@
-// Dashboard.js
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-const decryptedToken = "abcdefghijklmnopqrstuvwxyz";
 
 const Dashboard = () => {
   const [showSideMenu, setShowSideMenu] = useState(true);
@@ -10,11 +8,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log(localStorage.getItem("token"));
 
-    if (token) {
-      console.log("welcome");
-    } else {
+    if (!token) {
       navigate("/SignIn");
     }
   }, []);
@@ -23,16 +18,27 @@ const Dashboard = () => {
     setShowSideMenu(!showSideMenu);
   };
 
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+    navigate("/SignIn");
+  };
+
+  const handleCreateUser = () => {
+    navigate("/CreateUser"); // Navigate to the "Create New User" form
+  };
+
   return (
     <Container>
       <Header>
         <ToggleButton onClick={toggleSideMenu}>SIDE MENU</ToggleButton>
+        <SignOutButton onClick={handleSignOut}>Sign Out</SignOutButton>
       </Header>
       <MainContent>
         <SideMenu showSideMenu={showSideMenu}>
           {/* Side menu content goes here */}
         </SideMenu>
         <FeedContainer>
+          <CreateButton onClick={handleCreateUser}>Create</CreateButton>
           {[...Array(10).keys()].map((index) => (
             <Card key={index}>
               <h3>Post {index + 1}</h3>
@@ -46,6 +52,7 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -56,6 +63,9 @@ const Header = styled.header`
   background-color: #3b5998;
   color: white;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const MainContent = styled.div`
@@ -72,8 +82,10 @@ const SideMenu = styled.nav`
 
 const FeedContainer = styled.div`
   flex: 1;
-  overflow-y: auto; /* Make the container scrollable */
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 `;
 
 const Card = styled.div`
@@ -91,4 +103,21 @@ const ToggleButton = styled.button`
   border: none;
   padding: 10px;
   cursor: pointer;
+`;
+
+const SignOutButton = styled.button`
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+`;
+
+const CreateButton = styled.button`
+  background-color: #3b5998;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 10px;
 `;

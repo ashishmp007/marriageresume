@@ -8,8 +8,8 @@ const encryptedToken='abcdefghijklmnopqrstuvwxyz';
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("ashish");
+  const [password, setPassword] = useState("12345");
 
   const handleSignIn = (e) => {
     console.log("my username=>", username);
