@@ -65,6 +65,7 @@ const SignUp = () => {
         <SignUpButton type="submit">Sign Up</SignUpButton>
         <SignInLink>
           Already have an account? <Link to="/SignIn">Sign In</Link>
+          <div>new changes</div>
         </SignInLink>
       </SignUpForm>
     </SignUpContainer>
