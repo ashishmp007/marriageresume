@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ashishmp007/marriageresume/static/css/main.241951ba.css",
+    "main.js": "/ashishmp007/marriageresume/static/js/main.5ae1cbf3.js",
+    "index.html": "/ashishmp007/marriageresume/index.html",
+    "main.241951ba.css.map": "/ashishmp007/marriageresume/static/css/main.241951ba.css.map",
+    "main.5ae1cbf3.js.map": "/ashishmp007/marriageresume/static/js/main.5ae1cbf3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.241951ba.css",
+    "static/js/main.5ae1cbf3.js"
+  ]
+}
